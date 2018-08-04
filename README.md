@@ -13,6 +13,5 @@ Clone the repository and run:
 
 1. npm install
 
-2. npm run build
+2. npm start
 
-3. serve -s build
