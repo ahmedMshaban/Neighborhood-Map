@@ -10,6 +10,14 @@ html, body {
   background-color: rgba(7, 7, 7, 0.822);
 }
 
+.info-window ul {
+    padding-left: 0;
+}
+
+.info-window  li {
+  padding: 10px 0;
+}
+
 .burger {
   display: inline-block;
   left: 5px;
@@ -112,9 +120,6 @@ input[type=text] {
   background-color: rgba(255, 159, 87, 0.58);
 }
 
-.info-window-pic {
-  padding-left: 20px;
-}
 
 @media screen and (max-width: 641px) {
   .title {
@@ -127,7 +132,7 @@ input[type=text] {
 
   .search-and-list {
     top: 36px;
-    width: 22%;
+    width: 50%;
   }
 
   .search-and-list li {
