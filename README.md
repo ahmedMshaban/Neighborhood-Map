@@ -4,7 +4,7 @@
 
 Create a react application using two APIs one is Google maps and the other one was up to me, I chose to use Foursquare's API to find information about the places.
 
-##dependency
+## dependency
 
 -Foursquare's API
 -Google maps API
