@@ -1,17 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
 import GoogleMaps from './GoogleMaps'
 import Search from './Search';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state.locations = [
-      { name: 'Üniversite Öğrenci Evi', id: 'Uoe', location: {lat: 38.366343, lng: 27.197739} },
-      { name: 'Bozuk Plak Cafe', id: 'Bpc',  location: {lat: 38.368959, lng: 27.190229} },
-      { name: 'Kuruçeşme Cami', id: 'Kc',  location: {lat: 38.369598, lng: 27.193019} },
-      { name: 'Aybers Hikmet Karabacak Anadolu Lisesi', id: 'Ahk',  location: {lat: 38.368373, lng: 27.194559} },
-      { name: 'Müşerref Mahmut Tınas İlkokulu', id: 'Mht',  location: {lat: 38.369021 , lng: 27.194462} }
+     { name: 'Luna y Sol', id: '5468dc49498edc6b88c89220', location: {lat: 29.745154, lng: -95.377596} },
+     { name: 'St. Danes', id: '4b05a7b3f964a52056e022e3', location: {lat: 29.74391, lng: -95.38123} },
+     { name: 'Tacos a Go Go', id: '4ad13bbcf964a5209bdd20e3', location: {lat: 29.738444, lng: -95.379889} },
+     { name: 'Spicy Girl', id: '599d52765d891b017b6e035b', location: {lat: 29.738873, lng: -95.380134} },
+     { name: 'Njoy Thai Restaurant', id: '4fb196e0e4b03ad0edbffc7b', location: {lat: 29.744828 , lng: -95.383524} },
+     { name: 'Natachee’s Supper ‘n Punch', id: '4c8bd68555fba0939dd859ab', location: {lat: 29.738856  , lng: -95.379558} }
     ];
     //initializing the filtered locations to include all locations
     this.state.filteredLocations = this.state.locations;
@@ -23,6 +24,7 @@ class App extends React.Component {
     selectedLocation: ''
   }
 
+  // Adds or clears the state of selectedLocation
   selectLocation = (location) => {
     if (location.id === this.state.selectedLocation.id) {
       this.setState({selectedLocation: ''});
@@ -31,6 +33,7 @@ class App extends React.Component {
     }
   }
 
+  // Helps to filter the list and updates the state of the filtered locations
   queryUpdate = (value) => {
     this.setState(currentState => {
       let filteredLocations = [];
@@ -46,11 +49,8 @@ class App extends React.Component {
     });
   }
 
-  // Implement filtering of the markers alongside the text
-
   render() {
     return (
-      <Route path='/' render={() => (
         <div>
           <GoogleMaps
             locations={this.state.locations}
@@ -58,11 +58,11 @@ class App extends React.Component {
             selectedLocation={this.state.selectedLocation}
             myKey={'AIzaSyBB3j35dbLFQFIqURXBo5X11-9b4MiLTe4'}
             home={{
-              lat: 38.367243,
-              lng: 27.195143
+              lat: 29.742292,
+              lng: -95.37718
             }}
-            />
-          <Search 
+          />
+          <Search
             locations={this.state.locations}
             filteredLocations={this.state.filteredLocations}
             selectedLocation={this.state.selectedLocation}
@@ -70,12 +70,8 @@ class App extends React.Component {
             queryUpdate={this.queryUpdate}
           />
         </div>
-      )} />
     );
   }
 }
 
 export default App;
-
-
-
