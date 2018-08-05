@@ -1,24 +1,77 @@
 html, body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif, Arial;
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 
+.header, .search-and-list, input {
+  background-color: rgba(7, 7, 7, 0.822);
+}
+
+.burger {
+  display: inline-block;
+  left: 5px;
+  top: 5px;
+  padding-left: 15px;
+  width: 5%
+}
+.burger svg {
+  width: 32px;
+  fill: rgb(255, 159, 87);
+  cursor: pointer;
+}
+
+.title {
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  color: #212121;
+  width: 90%;
+  text-align: center;
+
+  /* margin-top: 5px; */
+}
+
+h1 {
+  color: white;
+}
+
 #map {
-  height: 100%;
+  width: 70%;
+  position: relative;
+  left: 30%;
+  /* display: block; */
+}
+
+main, #root {
+  margin: 0;
+}
+
+#map, .search-and-list {
+  height: calc(100% - 36px);
 }
 
 .search-and-list{
-  position: absolute;
-    top: 50px;
+    display: inline-block;
+    position: absolute;
+    top: 75px;
     left: 0;
-    width: 50%;
+    width: 30%;
     max-width: 250px;
-    background-color: white;
-    opacity: 0.8;
     z-index: 1;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+    transform: translate(-250, 0);
+    -webkit-transform: translate(0, 0);
+    transition: transform 0.3s ease;
+  }
+
+.hidden {
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    transition: transform 0.3s ease;
 }
 
 .search-and-list ul {
@@ -35,36 +88,66 @@ html, body {
 
 input[type=text] {
   width: 100%;
-  padding: 12px 20px;
+  padding: 12px 3px;
   box-sizing: border-box;
+  color: white;
 }
 
 .search-and-list li {
+  color: white;
   list-style-type: none;
   margin: 0;
-  margin-left: 5px;
   padding: 20px 5px;
   font-size: 18px;
+  list-style-position:inside;
+  border-bottom: 1px solid white;
   cursor: pointer;
 }
 
 .search-and-list li:hover {
-  background-color: rgba(57, 57, 197, 0.548);
+  background-color: rgba(255, 159, 87, 0.58);
 }
 
 .row-selected {
-  background-color: rgba(45, 180, 63, 0.39);
+  background-color: rgba(255, 159, 87, 0.58);
 }
 
 .info-window-pic {
   padding-left: 20px;
 }
 
-@media screen and (max-width: 415px) {
-  .search-and-list li {
+@media screen and (max-width: 641px) {
+  .title {
+    position: absolute;
+  }
+
+  h1, burger, .search-box {
     font-size: 16px;
   }
-  .search-box {
-    font-size: 18px;
+
+  .search-and-list {
+    top: 36px;
+    width: 22%;
   }
+
+  .search-and-list li {
+    font-size: 14px;
+  }
+
+  #map {
+    left: 22%;
+    width: calc(100% - 22%);
+  }
+}
+
+@media screen and (min-width: 850px) {
+  #map {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+
+#map.full {
+  width: 100%;
+  left: 0;
 }

@@ -24,12 +24,12 @@ class GoogleMaps extends Component {
     // Initializes the map, creates info window and creates and adds listeners to the markers
     initMap = () => {
         const mapWindow = new window.google.maps.Map(document.getElementById('map'), {
-            center: { lat: this.props.home.lat, lng: this.props.home.lng }, 
+            center: { lat: this.props.home.lat, lng: this.props.home.lng },
             zoom: 10
         });
 
         const infoWindow = new window.google.maps.InfoWindow({
-            maxWidth: 330
+            maxWidth: 170
         });
         this.setState({infoWindow}, (() =>
             this.setState({myMap: mapWindow}, ( () => {
@@ -63,7 +63,7 @@ class GoogleMaps extends Component {
         const infoWindow = this.state.infoWindow;
         if(marker.id === selectedLoc.id){
             this.populateInfoWindow(marker, infoWindow, this.state.myMap);
-            setTimeout(() => { infoWindow.close(); }, 2000);
+            // setTimeout(() => { infoWindow.close(); }, 2000);
             return window.google.maps.Animation.BOUNCE
         }
         return null
@@ -91,7 +91,7 @@ class GoogleMaps extends Component {
         content += vDetails.name ? `<h3>${vDetails.name}</h3>` : '';
         content += vDetails.categories[0].name ? `<h4>${vDetails.categories[0].name}</h4>` : '';
         content += vDetails.description ? `<h5>${vDetails.description}</h5>` : '';
-        content += vDetails.bestPhoto.prefix && vDetails.bestPhoto.suffix ? `<img src="${vDetails.bestPhoto.prefix}300x200${vDetails.bestPhoto.suffix}" alt="Restaurant Image" class="info-window-pic">` : '';
+        content += vDetails.bestPhoto.prefix && vDetails.bestPhoto.suffix ? `<img src="${vDetails.bestPhoto.prefix}150x90${vDetails.bestPhoto.suffix}" alt="Restaurant Image" class="info-window-pic">` : '';
         content += '<p><ul>'
         content += vDetails.contact.formattedPhone && vDetails.hours.status ? `<li>Phone: ${vDetails.contact.formattedPhone} ${vDetails.hours.status}</li>` : '';
         content += vDetails.rating && vDetails.likes.summary ? `<li class="rating">Rating: ${vDetails.rating} with ${vDetails.likes.summary}</li>` : '';
@@ -100,7 +100,7 @@ class GoogleMaps extends Component {
         content += '</p></ul></div>'
         return content;
     };
-    
+
     render() {
         const {filteredLocations} = this.props;
         const markers = this.state.markers
